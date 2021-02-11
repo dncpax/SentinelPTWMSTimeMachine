@@ -1,5 +1,5 @@
 # SentinelPTWMSTimeMachine
-Criador de mosaicos de imagens Sentinel-2 RGB e IRG para Portugal, com serviço WMS, com suporte temporal.\
+Gerador de mosaicos de imagens Sentinel-2 RGB e IRG para Portugal, com serviço WMS, com suporte temporal.\
 Descrevem-se os ficheiros por ordem de execução.
 
 ## sentinelptTM_total3.sh
