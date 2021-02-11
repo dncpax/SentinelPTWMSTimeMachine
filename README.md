@@ -1,6 +1,7 @@
 # SentinelPTWMSTimeMachine
 Gerador de mosaicos de imagens Sentinel-2 RGB e IRG para Portugal, com serviço WMS, com suporte temporal.\
 Descrevem-se os ficheiros por ordem de execução.
+Um viewer está disponível aqui: http://sentinelpt.viasig.com/.
 
 ![image](https://user-images.githubusercontent.com/2836636/107666615-9cfa5100-6c86-11eb-84bf-a9490f91b4e1.png)
 ![image](https://user-images.githubusercontent.com/2836636/107667135-3164b380-6c87-11eb-9ea4-dfe838d6acd3.png)![image](https://user-images.githubusercontent.com/2836636/107667326-640eac00-6c87-11eb-8176-8bc5f7abe5f8.png)
