@@ -62,3 +62,8 @@ Cria tileindexes para os vrt numa data usando o comando gdaltindex do gdal.\
 E actualiza tileindexes globais, usando o comando ogrinfo e sql para copiar os registos.\
 No fim, exporta o shapefile global para json para criar uma lista de datas que possa ser usada no viewer html.\
 Sintaxe: par1=pasta com ficheiros eg 20190803.
+\
+## sentinelpt.map
+Mapfile que publica todos os vrt RGB e IRG em WMS e com suporte temporal (parametro TIME).
+Usa os tileindex criados antes, quer para mostrar a quadrícula das imagens, quer para visualizar as próprias imagens.
+Inicialmente tentava aplicar um stretch às imagens, mas esse stretch é agora aplicado pelos scripts de processamento.
