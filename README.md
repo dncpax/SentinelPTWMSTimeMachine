@@ -22,20 +22,20 @@ Notes: codigo inicial obtido em: https://gis.stackexchange.com/questions/233670/
 \
 Exemplo: tiles=29SNB, 29SNC, 29SPB, 29SPC (para o alqueva)\
 \
-É preciso substituir "user" e "pass" pelo login no scihub.
-\
+É preciso substituir "user" e "pass" pelo login no scihub.\
+
 ## gdal_processa_pasta3.py
 Processa bandas numa pasta sentinel2 em jp2 16 bits para tif 8bits etrs89 usando um script de comandos gdal externo (gdal_sentinel2_rgbi_reproj_msk4.sh).\
-Parameters: pasta com ficheiros a processar e onde se guardam os resultados
-\
+Parameters: pasta com ficheiros a processar e onde se guardam os resultados.\
+
 ## gdal_sentinel2_rgbi_reproj_msk4.sh
 Script para converter as 4 bandas de jp2 16bits para tif 8bits, e projectar para etrs89, e construir 2 mosaicos: rgb e irg.\
 Os mosaicos são TILE_rgb_mask.vrt e TILE_irg_mask.vrt.\
 Ou seja, este script é chamado pelo gdal_processa_pasta para cada tile sentinel, e produz para cada TILE: 4 jpeg 8bit, 1 vrt rgb, 1 vrt irg, 1 máscara para cada vrt. Calcula pirâmides e estatísticas para os 2 vrt.
 Sintaxe: indicar nome da tile, eg: T29SPB_20190813T112121"\
 Têm de existir 4 ficheiros jp2 para converter, eg: b02, b03, b04, b08"\
-Cria máscara automaticamente usando o comando nearblack do gdal.
-\
+Cria máscara automaticamente usando o comando nearblack do gdal.\
+
 ## gdal_stretch2.py
 Cria vrt's com constrast stretch, a partir de originais em formato vrt.\
 Este stretch serve apenas para facilitar uma melhor visualização, já que as imagens sentinel tendem a ser muito escuras.\
@@ -46,8 +46,8 @@ Calcula para cada banda o min e max a clipar com a fórmula do desvio padrão: M
 Usamos 2.8stddev porque se ajusta bem ao sentinel e é simples de calcular.\
 Recalcula as stats considerando a mascara, sendo diferente das calculadas pelo gdalinfo.\
 Aplica o stretch usando o SCALE do formato VRT, sem alterar as imagens originais.\
-E cria 2 vrt rgb+alpha e irg+alpha: TILE_*_viz.vrt
-\
+E cria 2 vrt rgb+alpha e irg+alpha: TILE_*_viz.vrt\
+
 ## gdal_criartileindex.py
 Processa tileindexes para termos um tileindex time-aware para o mapserver, usando um script de comandos ogr (gdal_tileindexes.sh).\
 Mantem 2 tileindex globais - 1 para rgb e outro para irg.\
@@ -55,15 +55,21 @@ Também cria 2 tileindexes na pasta dos jp2 (1 para rgb, 1 para irg). Estes são
 Antes de importar apaga registos que já existam para esta pasta/data para evitar duplicados.\
 Ou seja, para cada pasta de data temos 2 vrt (rgb e irg), e um shapefile com a listagem destas imagens.
 Depois temos um shapefile global onde estão todas as imagens de todas as datas. Este é usado pelo MapServer.\
-Parameters: pasta com ficheiros a processar (data, eg 20190804)
-\
+Parameters: pasta com ficheiros a processar (data, eg 20190804)\
+
 ## gdal_tileindexes.sh
 Cria tileindexes para os vrt numa data usando o comando gdaltindex do gdal.\
 E actualiza tileindexes globais, usando o comando ogrinfo e sql para copiar os registos.\
 No fim, exporta o shapefile global para json para criar uma lista de datas que possa ser usada no viewer html.\
-Sintaxe: par1=pasta com ficheiros eg 20190803.
-\
+Sintaxe: par1=pasta com ficheiros eg 20190803.\
+
 ## sentinelpt.map
 Mapfile que publica todos os vrt RGB e IRG em WMS e com suporte temporal (parametro TIME).
 Usa os tileindex criados antes, quer para mostrar a quadrícula das imagens, quer para visualizar as próprias imagens.
 Inicialmente tentava aplicar um stretch às imagens, mas esse stretch é agora aplicado pelos scripts de processamento.
+
+# Estrutura em disco
+Os scripts assumem uma estrutura em disco onde se colocam os ficheiros.
+dados - pasta mãe com os scripts, e onde ficam os tileindex globais
+    |-- 20200501 - pasta com ficheiros para o dia 20200501\
+                   onde são colocados os ficheiros descarregados pelo script e todos os resultados
