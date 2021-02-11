@@ -26,3 +26,11 @@ Exemplo: tiles=29SNB, 29SNC, 29SPB, 29SPC (para o alqueva)\
 ## gdal_processa_pasta3.py
 Processa bandas numa pasta sentinel2 em jp2 16 bits para tif 8bits etrs89 usando um script de comandos gdal externo (gdal_sentinel2_rgbi_reproj_msk4.sh).\
 Parameters: pasta com ficheiros a processar e onde se guardam os resultados
+\
+## gdal_sentinel2_rgbi_reproj_msk4.sh
+Script para converter as 4 bandas de jp2 16bits para tif 8bits, e projectar para etrs89, e construir 2 mosaicos: rgb e irg.\
+Os mosaicos são TILE_rgb_mask.vrt e TILE_${1}_irg_mask.vrt.\
+Sintaxe: indicar nome da tile, eg: T29SPB_20190813T112121"\
+Têm de existir 4 ficheiros jp2 para converter, eg: b02, b03, b04, b08"\
+Cria máscara automaticamente usando o comando nearblack do gdal.
+
