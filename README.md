@@ -2,6 +2,8 @@
 Gerador de mosaicos de imagens Sentinel-2 RGB e IRG para Portugal, com serviço WMS, com suporte temporal.\
 Descrevem-se os ficheiros por ordem de execução.
 
+![image](https://user-images.githubusercontent.com/2836636/107666615-9cfa5100-6c86-11eb-84bf-a9490f91b4e1.png)
+
 ## sentinelptTM_total3.sh
 Script que executa todos os passos para obter, processar, e publicar as imagens para uma data especificada pelo utilizador. Deve ser executado quando se pretende uma data nova ou substituir uma que já exista em disco.
 Cria nova pasta com as imagens, e actualiza o shapefile de índice que é simultaneamente a bd com as imagens disponíveis. Exporta este shp para json que é depois usado no viewer html.
