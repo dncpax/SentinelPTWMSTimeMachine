@@ -54,5 +54,5 @@ Mantem 2 tileindex globais - 1 para rgb e outro para irg.\
 Também cria 2 tileindexes na pasta dos jp2 (1 para rgb, 1 para irg). Estes são importados para os globais.\
 Antes de importar apaga registos que já existam para esta pasta/data para evitar duplicados.\
 Ou seja, para cada pasta de data temos 2 vrt (rgb e irg), e um shapefile com a listagem destas imagens.
-Depois temos um shapefile global onde estão todas as imagens de todas as datas. Este é usado pelo MapServer.
+Depois temos um shapefile global onde estão todas as imagens de todas as datas. Este é usado pelo MapServer.\
 Parameters: pasta com ficheiros a processar (data, eg 20190804)
