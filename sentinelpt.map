@@ -1,0 +1,158 @@
+MAP
+  NAME "SentinelPT_WMS"
+  STATUS ON
+  SIZE 400 300
+  EXTENT -2200000 -712631 3072800 3840000
+  UNITS METERS
+  SHAPEPATH "../dados"
+  IMAGECOLOR 255 255 255
+#  FONTSET ../etc/fonts.txt
+  CONFIG "MS_ERRORFILE" "/var/www/html/mstmp/ms_error.txt"
+  DEBUG 5
+  WEB
+    IMAGEPATH "/var/www/html/mstmp/"
+    IMAGEURL "/mstmp/"
+    METADATA
+      "wms_title"     "SentinelPT Time-Machine Mosaics WMS Server"  ##required
+      "wms_onlineresource" "http://sentinelpt.viasig.com/wms/?map=/home/ubuntu/maps/sentinelpt.map&"   ##required
+      "wms_srs"       "EPSG:3763 EPSG:3857 EPSG:4326"  ##recommended
+      "wms_enable_request" "*"   ##necessary
+      "wms_getmap_formatlist" "image/jpeg,image/png"
+#      "wms_timeformat" "YYYY-MM-DD"
+      "wms_fees" "none"
+      "wms_attribution_title" 
+"Dados Sentinel-2 para Portugal, servidos por sentinelpt.viasig.com. Estes 
+dados têm uma licença CC BY-SA 3.0 PT (em resumo: pode usar para qualquer fim,
+ tem de indicar a fonte). Contem dados modificados Copernicus Sentinel [2019-]
+ para dados Sentinel."
+      "wms_attribution_onlineresource" "http://sentinelpt.viasig.com/licenca"
+      "wms_accessconstraints" "none"
+      "wms_abstract" 
+"Este serviço disponibiliza dados Sentinel-2 para Portugal, ao longo do tempo 
+- um mosaico a cada 15 dias aprox. O serviço suporta a variável tempo (wms time
+). 2 mosaicos estão disponíveis: rgb e irg (falsa-cor com banda infravermelhos
+ mostra vegetação com alto teor clorofila). Os dados são processados para uma 
+visualização rápida e menor espaço em disco. Para processamento recomenda-se 
+obter os dados originais.
+<br/>Licença: Dados Sentinel-2 para Portugal, servidos por sentinelpt.viasig.com. Estes
+dados têm uma licença CC BY-SA 3.0 PT (em resumo: pode usar para qualquer fim,
+ tem de indicar a fonte). Contem dados modificados Copernicus Sentinel [2019-]
+ para dados Sentinel."
+    END
+  END # Web
+  PROJECTION
+    "init=epsg:3763"   ##required
+  END
+  #
+  # Start of layer definitions
+  #
+  #mostar quads com datas das imagens
+  LAYER
+    STATUS OFF
+    NAME "Indice"
+    TYPE POLYGON
+    DATA "/home/ubuntu/dados/tileindex_global_rgb.shp"
+    LABELITEM "dataimg"
+    METADATA
+      "wms_enable_request" "GetMap GetFeatureInfo"
+      "gml_include_items" "all"
+      "wms_include_items" "all"
+      "wms_title" "Indice datas"
+      "wms_timeextent" "2019-01-01/2100-08-13"
+      "wms_timeitem" "time"
+#      "wms_timedefault" "2019-08-03"
+    END
+    DUMP TRUE
+    TEMPLATE bla
+    CLASS
+      STYLE
+#        COLOR 246 241 223
+        OUTLINECOLOR 255 0 0
+      END
+      LABEL
+        COLOR 255 0 0
+      END
+    END
+  END
+  #mostar quads com nomes dos ficheiros
+  LAYER
+    STATUS OFF
+    NAME "IndiceFiles"
+    TYPE POLYGON
+    DATA "/home/ubuntu/dados/tileindex_global_rgb.shp"
+    LABELITEM "location"
+    METADATA
+      "wms_enable_request" "GetMap GetFeatureInfo"
+      "gml_include_items" "all"
+      "wms_include_items" "all"
+      "wms_title" "Indice Ficheiros"
+      "wms_timeextent" "2019-01-01/2100-08-13"
+      "wms_timeitem" "time"
+#      "wms_timedefault" "2019-08-03"
+    END
+    DUMP TRUE
+    TEMPLATE bla
+    CLASS
+      STYLE
+        OUTLINECOLOR 255 0 0
+      END
+      LABEL
+        COLOR 255 0 0
+      END
+    END
+  END
+  LAYER
+    NAME "SentinelPT_RGB"
+    METADATA
+      "wms_title"    "SentinelPT - Alentejo RGB"   ##required
+      "wms_abstract" "Combinacao de bandas 4, 3, 2, que equivale a cor verdadeira, ou RGB."
+      "wms_timeextent" "2019-01-01/2100-08-13"
+      "wms_timeitem" "time"
+#      "wms_timedefault" "2019-08-03"
+    END
+    TYPE RASTER
+# forma de contrast stretch com força-bruta!
+# na verdade, deve-se encontrar um baseado em algoritmo, imagem-a-imagem!
+# por ex., baseado nos algoritmos do qgis, ou:
+# https://github.com/gina-alaska/dans-gdal-scripts/blob/master/src/gdal_contrast_stretch.cc
+# https://medium.com/planet-stories/a-gentle-introduction-to-gdal-part-4-working-with-satellite-data-d3835b5e2971
+# https://gis.stackexchange.com/questions/284086/increase-contrast-of-merged-planet-labs-scenes
+# https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html
+#    PROCESSING "SCALE_1=5,200"
+#    PROCESSING "SCALE_2=5,200"
+#    PROCESSING "SCALE_3=5,200"
+#    OFFSITE 0 0 0 #ocultar pixeis pretos
+    STATUS OFF
+    #MASK MASCARA
+#    DATA /home/ubuntu/dados/20190823/T29SNB_20190823T112121_rgb_10m.vrt
+#    TILEINDEX "/home/ubuntu/dados/20190823/20190823_rgb.shp"
+    TILEINDEX "/home/ubuntu/dados/tileindex_global_rgb.shp"
+    TILEITEM "localviz"
+    PROJECTION
+      "init=epsg:3763"   ##recommended
+    END
+  END # Layer
+  LAYER
+    NAME "SentinelPT_IRG"
+    METADATA
+      "wms_title"    "SentinelPT - Alentejo IRG"   ##required
+      "wms_abstract" "Combinacao de bandas 8, 4, 3, que equivale a falsa cor com banda infravermelhos (B08)."
+      "wms_timeextent" "2019-01-01/2100-08-13"
+      "wms_timeitem" "time"
+    END
+    TYPE RASTER
+#    PROCESSING "SCALE_1=5,200"
+#    PROCESSING "SCALE_2=5,200"
+#    PROCESSING "SCALE_3=5,200"
+#    OFFSITE 0 0 0 #ocultar pixeis pretos
+    STATUS OFF
+#    DATA /home/ubuntu/dados/20190823/T29SNB_20190823T112121_rgb_10m.vrt
+#    TILEINDEX "/home/ubuntu/dados/20190823/20190823_irg.shp"
+    TILEINDEX "/home/ubuntu/dados/tileindex_global_irg.shp"
+    TILEITEM "localviz"
+    PROJECTION
+      "init=epsg:3763"   ##recommended
+    END
+  END # Layer
+
+END # Map File
