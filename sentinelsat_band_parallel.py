@@ -1,4 +1,4 @@
-# Author:  EDIA, S.A.
+# Author:  Duarte Carreira
 # Date:    Agosto 2019
 # Purpose: Pesquisa arquivo Sentinel 2, por tiles específicas, para um dia específico, e faz download apenas
 #           das bandas 2, 3, 4, e 8 
