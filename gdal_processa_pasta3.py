@@ -1,4 +1,4 @@
-# Author:  EDIA, S.A.
+# Author:  Duarte Carreira
 # Date:    Agosto 2019
 # Purpose: processa bandas numa pasta sentinel2 em jp2 16 bits para tif 8bits etrs89
 #          usando um script de comandos gdal externo (gdal_sentinel2_rgbi_reproj_msk4.sh)
