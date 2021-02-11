@@ -3,7 +3,7 @@ Gerador de mosaicos de imagens Sentinel-2 RGB e IRG para Portugal, com serviço 
 Descrevem-se os ficheiros por ordem de execução.
 
 ![image](https://user-images.githubusercontent.com/2836636/107666615-9cfa5100-6c86-11eb-84bf-a9490f91b4e1.png)
-![image](https://user-images.githubusercontent.com/2836636/107667135-3164b380-6c87-11eb-9ea4-dfe838d6acd3.png)
+![image](https://user-images.githubusercontent.com/2836636/107667135-3164b380-6c87-11eb-9ea4-dfe838d6acd3.png)![image](https://user-images.githubusercontent.com/2836636/107667326-640eac00-6c87-11eb-8176-8bc5f7abe5f8.png)
 
 ## sentinelptTM_total3.sh
 Script que executa todos os passos para obter, processar, e publicar as imagens para uma data especificada pelo utilizador. Deve ser executado quando se pretende uma data nova ou substituir uma que já exista em disco.
