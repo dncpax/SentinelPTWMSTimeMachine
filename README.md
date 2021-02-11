@@ -9,6 +9,7 @@ Cria nova pasta com as imagens, e actualiza o shapefile de índice que é simult
 
 Pesquisa arquivo Sentinel 2, por tiles específicas, para um dia específico, e faz download apenas das bandas 2, 3, 4, e 8. E faz o download banda-a-banda.\
 Versão que abre 2 sessoes em paralelo, que é o máximo de conexoes permitido pelo sci-hub.\
+\
 Parameters: data no formato yyyymmdd - pesquisa 5 dias anteriores. (obrigatório)\
             cloudcov_int =  70 cobertura de nuvens aceitavel (opcional)\
             tiles_str = 'T29SMC|T29SMD|T29SND|T29SPD|T29TNE|T29TNF|T29TNG|T29TPE|T29TPF|T29TPG|T29TQF|T29TQG'\
