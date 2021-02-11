@@ -47,3 +47,12 @@ Usamos 2.8stddev porque se ajusta bem ao sentinel e é simples de calcular.\
 Recalcula as stats considerando a mascara, sendo diferente das calculadas pelo gdalinfo.\
 Aplica o stretch usando o SCALE do formato VRT, sem alterar as imagens originais.\
 E cria 2 vrt rgb+alpha e irg+alpha: TILE_*_viz.vrt
+\
+## gdal_criartileindex.py
+Processa tileindexes para termos um tileindex time-aware para o mapserver, usando um script de comandos ogr (gdal_tileindexes.sh).\
+Mantem 2 tileindex globais - 1 para rgb e outro para irg.\
+Também cria 2 tileindexes na pasta dos jp2 (1 para rgb, 1 para irg). Estes são importados para os globais.\
+Antes de importar apaga registos que já existam para esta pasta/data para evitar duplicados.\
+Ou seja, para cada pasta de data temos 2 vrt (rgb e irg), e um shapefile com a listagem destas imagens.
+Depois temos um shapefile global onde estão todas as imagens de todas as datas. Este é usado pelo MapServer.
+Parameters: pasta com ficheiros a processar (data, eg 20190804)
