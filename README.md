@@ -35,4 +35,15 @@ Ou seja, este script é chamado pelo gdal_processa_pasta para cada tile sentinel
 Sintaxe: indicar nome da tile, eg: T29SPB_20190813T112121"\
 Têm de existir 4 ficheiros jp2 para converter, eg: b02, b03, b04, b08"\
 Cria máscara automaticamente usando o comando nearblack do gdal.
-
+\
+## gdal_stretch2.py
+Cria vrt's com constrast stretch, a partir de originais em formato vrt.\
+Este stretch serve apenas para facilitar uma melhor visualização, já que as imagens sentinel tendem a ser muito escuras.\
+Parameters: pasta com ficheiros a processar (data, eg 20190804)\
+Parte do código obtido em: https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html\
+\
+Calcula para cada banda o min e max a clipar com a fórmula do desvio padrão: Mean +- 2.8*std\
+Usamos 2.8stddev porque se ajusta bem ao sentinel e é simples de calcular.\
+Recalcula as stats considerando a mascara, sendo diferente das calculadas pelo gdalinfo.\
+Aplica o stretch usando o SCALE do formato VRT, sem alterar as imagens originais.\
+E cria 2 vrt rgb+alpha e irg+alpha: TILE_*_viz.vrt
