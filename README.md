@@ -69,7 +69,7 @@ Usa os tileindex criados antes, quer para mostrar a quadrícula das imagens, que
 Inicialmente tentava aplicar um stretch às imagens, mas esse stretch é agora aplicado pelos scripts de processamento.
 
 # Estrutura em disco
-Os scripts assumem uma estrutura em disco onde se colocam os ficheiros.
-dados - pasta mãe com os scripts, e onde ficam os tileindex globais
+Os scripts assumem uma estrutura em disco onde se colocam os ficheiros.\
+dados - pasta mãe com os scripts, e onde ficam os tileindex globais\
     |-- 20200501 - pasta com ficheiros para o dia 20200501\
                    onde são colocados os ficheiros descarregados pelo script e todos os resultados
