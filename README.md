@@ -56,3 +56,9 @@ Antes de importar apaga registos que já existam para esta pasta/data para evita
 Ou seja, para cada pasta de data temos 2 vrt (rgb e irg), e um shapefile com a listagem destas imagens.
 Depois temos um shapefile global onde estão todas as imagens de todas as datas. Este é usado pelo MapServer.\
 Parameters: pasta com ficheiros a processar (data, eg 20190804)
+\
+## gdal_tileindexes.sh
+Cria tileindexes para os vrt numa data usando o comando gdaltindex do gdal.\
+E actualiza tileindexes globais, usando o comando ogrinfo e sql para copiar os registos.\
+No fim, exporta o shapefile global para json para criar uma lista de datas que possa ser usada no viewer html.\
+Sintaxe: par1=pasta com ficheiros eg 20190803.
