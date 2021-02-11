@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Author:  EDIA, S.A.
+# Author:  Duarte Carreira
 # Date:    Agosto 2019
 # Purpose: Cria vrt's com constrast stretch, a partir de originais também vrt's
 #          para facilitar uma melhor visualização
