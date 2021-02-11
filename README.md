@@ -12,7 +12,11 @@ E faz o download banda-a-banda.
 
 Versão que abre 2 sessoes em paralelo, que é o máximo de conexoes permitido pelo sci-hub.
 
-Parameters: data no formato yyyymmdd - pesquisa 5 dias anteriores.
+Parameters: data no formato yyyymmdd - pesquisa 5 dias anteriores. (obrigatório)
+            cloudcov_int =  70 cobertura de nuvens aceitavel (opcional)
+            tiles_str = 'T29SMC|T29SMD|T29SND|T29SPD|T29TNE|T29TNF|T29TNG|T29TPE|T29TPF|T29TPG|T29TQF|T29TQG'
+                         usamos as tiles indicadas no comando ou pesquisamos as tiles de portugal (opcional)
+ 
  Notes: codigo inicial obtido em: https://gis.stackexchange.com/questions/233670/sentinel2-get-jpeg200-bands-only
         utiliza sentinelsat: https://github.com/sentinelsat/sentinelsat
         só procede com o download se todas as tiles forem encontradas nesse dia
