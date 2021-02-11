@@ -3,7 +3,7 @@ Criador de mosaicos de imagens Sentinel-2 RGB e IRG para Portugal, com serviço 
 
 
 
-##sentinelsat_band_parallel.py
+## sentinelsat_band_parallel.py
 
 Pesquisa arquivo Sentinel 2, por tiles específicas, para um dia específico, e faz download apenas das bandas 2, 3, 4, e 8 .
 E faz o download banda-a-banda.
