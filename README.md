@@ -40,7 +40,7 @@ Cria máscara automaticamente usando o comando nearblack do gdal.
 Cria vrt's com constrast stretch, a partir de originais em formato vrt.\
 Este stretch serve apenas para facilitar uma melhor visualização, já que as imagens sentinel tendem a ser muito escuras.\
 Parameters: pasta com ficheiros a processar (data, eg 20190804)\
-Parte do código obtido em: https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html\
+Parte do código obtido em: https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html
 \
 Calcula para cada banda o min e max a clipar com a fórmula do desvio padrão: Mean +- 2.8*std\
 Usamos 2.8stddev porque se ajusta bem ao sentinel e é simples de calcular.\
