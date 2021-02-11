@@ -24,6 +24,5 @@ Exemplo: tiles=29SNB, 29SNC, 29SPB, 29SPC (para o alqueva)\
 É preciso substituir "user" e "pass" pelo login no scihub.
 \
 ## gdal_processa_pasta3.py
-Processa bandas numa pasta sentinel2 em jp2 16 bits para tif 8bits etrs89
-usando um script de comandos gdal externo (gdal_sentinel2_rgbi_reproj_msk4.sh)
+Processa bandas numa pasta sentinel2 em jp2 16 bits para tif 8bits etrs89 usando um script de comandos gdal externo (gdal_sentinel2_rgbi_reproj_msk4.sh).\
 Parameters: pasta com ficheiros a processar e onde se guardam os resultados
