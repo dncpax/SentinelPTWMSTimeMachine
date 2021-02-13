@@ -1,7 +1,6 @@
 # Author:  Duarte Carreira
 # Date:    Agosto 2019
-# Purpose: Pesquisa arquivo Sentinel 2, por tiles específicas, para um dia específico, e faz download apenas
-#           das bandas 2, 3, 4, e 8 
+# Purpose: Pesquisa arquivo Sentinel 2, por tiles específicas, para um dia específico, não faz download
 #          É útil porque faz apenas a pesquisa e não processa nada... é cópia do código de pesquisa usado no sentinelsat_band_parallel.py.
 # Parameters: data no formato yyyymmdd - pesquisa 5 dias anteriores
 # Notes: codigo inicial obtido em: https://gis.stackexchange.com/questions/233670/sentinel2-get-jpeg200-bands-only
