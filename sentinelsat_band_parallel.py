@@ -13,6 +13,7 @@
 #        utiliza sentinelsat: https://github.com/sentinelsat/sentinelsat
 #        só procede com o download se todas as tiles forem encontradas nesse dia
 # Example: tiles=29SNB, 29SNC, 29SPB, 29SPC (para o alqueva)
+# É preciso definir o login no scihub com as vars de ambiente API_USER e API_PWD.
 
 
 from sentinelsat.sentinel import SentinelAPI, read_geojson, geojson_to_wkt
