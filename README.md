@@ -27,7 +27,7 @@ Notes: codigo inicial obtido em: https://gis.stackexchange.com/questions/233670/
 \
 Exemplo: tiles=29SNB, 29SNC, 29SPB, 29SPC (para o alqueva)\
 \
-É preciso substituir "user" e "pass" pelo login no scihub.\
+É preciso definir o login no scihub com as vars de ambiente API_USER e API_PWD.\
 
 ## gdal_processa_pasta3.py
 Processa bandas numa pasta sentinel2 em jp2 16 bits para tif 8bits etrs89 usando um script de comandos gdal externo (gdal_sentinel2_rgbi_reproj_msk4.sh).\
