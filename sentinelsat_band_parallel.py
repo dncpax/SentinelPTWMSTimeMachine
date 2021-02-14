@@ -180,7 +180,7 @@ except:
 data_str = str(sys.argv[1])  #'20190822'
 
 # connect to the API
-api = SentinelAPI('user', 'pass', 'https://scihub.copernicus.eu/dhus')
+api = SentinelAPI(os.environ['API_USER'], os.environ['API_PWD'], 'https://scihub.copernicus.eu/dhus')
 
 #pesquisar quads prédefinidas
 #query devolve os dados de todos os itens na pesquisa, mas não todos os dados
