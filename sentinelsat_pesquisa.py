@@ -144,8 +144,10 @@ print ("Produtos encontrados: " + str(len(products)))
 #ordenar os resultados por cobertura de nuvens
 #produtos.sort(key=lambda x: x.cloudcoverpercentage, reverse=True)
 #teste = sorted(products, key=lambda x: x.cloudcoverpercentage, reverse=True)
-teste = OrderedDict(sorted(products.items(), key=lambda kv: kv[1]["cloudcoverpercentage"]))
-products = teste
+#teste = OrderedDict(sorted(products.items(), key=lambda kv: kv[1]["cloudcoverpercentage"]))
+#products = teste
+teste = sorted(products.items(), key=lambda kv: kv[1]["cloudcoverpercentage"])
+products = OrderedDict(sorted(teste, key=lambda kv: kv[1]["size"]))
 
 for prod in products:
     print("Ficheiro: %s, size: %s, clouds: %s" % (products[prod]["filename"],products[prod]["size"],products[prod]["cloudcoverpercentage"]))

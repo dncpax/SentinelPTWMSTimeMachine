@@ -132,6 +132,7 @@ def download_prods_bands(prod):
     #ciclo para obter as bandas 2,3,4, e 8
     # element [0] is AOT, [1] = band 2, [2] = band 3, [3] = band 4, [4] = band 8
     bands_idx = {1,2,3,4}
+
     for band_idx in bands_idx:
         band_id = bands["d"]["results"][band_idx]["Id"] 
         print ("band_id ou filename: " + band_id)
@@ -212,9 +213,13 @@ if(len(products))<1:
     sys.exit(1)
 
 print ("Produtos encontrados: " + str(len(products)))
-#ordenar os resultados por cobertura de nuvens
-teste = OrderedDict(sorted(products.items(), key=lambda kv: kv[1]["cloudcoverpercentage"]))
-products = teste
+#ordenar os resultados por cobertura de nuvens e por tamanho
+#aqui é definida a "inteligencia" da pesquisa
+#ao remover duplicados, vamos remover os dups com mais nuvens e com menor size.
+#por sorte e força bruta acabamos com um mosaico com pouquissimas falhas
+#obviamente, deve ser subsituido por um metodo inteligente! que assegure 0 falhas.
+teste = sorted(products.items(), key=lambda kv: kv[1]["cloudcoverpercentage"])
+products = OrderedDict(sorted(products.items(), key=lambda kv: parseSize(kv[1]["size"]), reverse=True))
 
 for prod in products:
     print("Ficheiro: " + products[prod]["filename"])
@@ -227,8 +232,10 @@ if(len(products)<len(tiles_str.split("|"))):
 #remover produtos "incompletos" ie com imagens muito incompletas
 #a forma rude e rapida é verificar o tamanho: 1,08GB é completa, abaixo incompl$
 #a forma inteligente será analisar a área não nula pelo overview!
+#dada a ordenação acima, ja nao vamos remover ficheiros abaixo de 1 limite!
 prods_a_apagar = []
 strLimite = "840 MB"
+#strLimite = "100 MB"
 intLimite = parseSize(strLimite)
 print ("A remover ficheiros menores que %s." % strLimite)
 for prod_id in products:
@@ -286,6 +293,9 @@ with open(dir_dados + '/search_footprints.geojson', 'w') as outfile:
 # connect to the api
 api_session = api.session
 api_url = "https://scihub.copernicus.eu/apihub/odata/v1/"
+
+#obter os quicklooks
+api.download_all_quicklooks(products)
 
 #chamar o download de produtos usando 2 threads!
 pool = ThreadPoolExecutor(max_workers=2)
